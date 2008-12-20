@@ -1,0 +1,6 @@
+content smartdiggbutton chrome/content/
+locale smartdiggbutton en-US chrome/locale/en-US/
+skin smartdiggbutton classic/1.0 chrome/skin/
+overlay chrome://browser/content/browser.xul chrome://smartdiggbutton/content/firefoxOverlay.xul
+style chrome://global/content/customizeToolbar.xul chrome://smartdiggbutton/skin/overlay.css
+

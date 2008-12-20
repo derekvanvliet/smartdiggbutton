@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://smartdiggbutton/locale/smartdiggbutton.dtd">
+<overlay id="smartdiggbutton-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="smartdiggbutton-strings" src="chrome://smartdiggbutton/locale/smartdiggbutton.properties"/>
+  </stringbundleset>
+  <statusbar id="status-bar">
+      <toolbarbutton id="smartdiggbutton-toolbar-button"
+    label=""
+    oncommand="smartdiggbutton.onToolbarButtonCommand()"
+    />
+   </statusbar>
+</overlay>
