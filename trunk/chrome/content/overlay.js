@@ -90,6 +90,8 @@ var smartdiggbutton = {
   oldURL: null,
   buttonURL: null,
   sdbTimeout: null,
+  prefs: null,
+  new_tab_links: false,
 
   onLoad: function() {
     // initialization code
@@ -97,6 +99,29 @@ var smartdiggbutton = {
     this.strings = document.getElementById("smartdiggbutton-strings");
     gBrowser.addProgressListener(myExt_urlBarListener,
         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
+	// Register to receive notifications of preference changes
+	
+	this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService)
+			.getBranch("smartdiggbutton.");
+	this.prefs.QueryInterface(Components.interfaces.nsIPrefBranch2);
+	this.prefs.addObserver("", this, false);
+	
+	this.new_tab_links = this.prefs.getBoolPref("new_tab_links");
+  },
+  observe: function(subject, topic, data)
+  {
+	if (topic != "nsPref:changed")
+	{
+		return;
+	}
+
+	switch(data)
+	{
+		case "new_tab_links":
+			this.new_tab_links = this.prefs.getBoolPref("new_tab_links");
+			break;
+	}
   },
   onMenuItemCommand: function(e) {
     var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
@@ -110,7 +135,14 @@ var smartdiggbutton = {
 
 	if (this.buttonURL != null)
 	{
-		content.document.location.href = this.buttonURL;
+		if (this.new_tab_links)
+		{
+			gBrowser.selectedTab = gBrowser.addTab(this.buttonURL);
+		}
+		else
+		{
+			content.document.location.href = this.buttonURL;
+		}
 	}
   },
   uninit: function() {
