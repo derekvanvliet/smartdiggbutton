@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+ 
+<prefwindow id="smartdiggbutton-prefs"
+     title="Smart Digg Button Options"
+     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+<prefpane id="smartdiggbutton-pane" label="Smart Digg Button Settings">
+   <preferences>
+    <preference id="pref_new_tab_links" name="smartdiggbutton.new_tab_links" type="bool"/>
+  </preferences>
+
+  <hbox align="center">
+    <checkbox label="Open Links in New Tabs" preference="pref_new_tab_links" id="new_tab_links"/>
+  </hbox>
+</prefpane>
+ 
+</prefwindow>

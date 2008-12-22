@@ -7,7 +7,9 @@
     <em:id>smartdiggbutton@derek.van.vliet</em:id>
     <em:version>1.02</em:version>
     <em:type>2</em:type>
-   
+
+    <em:optionsURL>chrome://smartdiggbutton/content/options.xul</em:optionsURL>
+
     <!-- Target Application this extension can install into, 
          with minimum and maximum supported versions. --> 
     <em:targetApplication>
